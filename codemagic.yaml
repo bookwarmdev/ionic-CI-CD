@@ -6,14 +6,12 @@ workflows:
     environment:
       groups:
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-      # (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
-        - keystore_credentials 
-            FCM_KEYSTORE: MyApp.jks
-            FCM_KEYSTORE_PASSWORD: MyAppTest 
-            FCM_KEY_ALIAS_PASSWORD: MyAppTest 
-            FCM_KEY_ALIAS_USERNAME: MyApp 
-      # (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
-        - google_play 
+        - keystore_credentials: # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
+            FCM_KEYSTORE: MyApp.jks #<-- Put your keystore file here
+            FCM_KEYSTORE_PASSWORD: MyAppTest #<-- Put your keystore password here
+            FCM_KEY_ALIAS_PASSWORD: MyAppTest #<-- Put your keystore alias password here
+            FCM_KEY_ALIAS_USERNAME: MyApp #<-- Put your keystore alias username here
+        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
         - other
       vars:
         FCI_KEYSTORE_PATH: /tmp/keystore.keystore
@@ -68,7 +66,7 @@ workflows:
 # iOS Ionic Cordova workflow example
 # The following example shows a workflow that can be used to publish your Ionic Cordova iOS app to App Store Connect.
 
-workflows:1
+workflows:
   ionic-cordova-ios-workflow:
     name: MyApp Workflow
     max_build_duration: 120
@@ -79,7 +77,7 @@ workflows:1
         # - manual_code_signing # <-- (Includes FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
         # Automatic Code Signing
         # https://appstoreconnect.apple.com/access/api
-        - app_store_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
+        - app_store_credentials: # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
           APP_STORE_CONNECT_ISSUER_ID: test  #<-- Put your App Store Connect Issuer Id here 
           APP_STORE_CONNECT_KEY_IDENTIFIER: test  #<-- Put your App Store Connect Key Identifier here 
           APP_STORE_CONNECT_PRIVATE_KEY: test  #<-- Put your App Store Connect Private Key here
