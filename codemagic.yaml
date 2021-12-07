@@ -7,7 +7,7 @@ workflows:
       groups:
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
         - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
-            CM_KEYSTORE: MyApp.jks #<-- Put your keystore file here
+            CM_KEYSTORE: "MyApp.jks" #<-- Put your keystore file here
             CM_KEYSTORE_PASSWORD: MyAppTest #<-- Put your keystore password here
             CM_KEY_ALIAS_PASSWORD: MyAppTest #<-- Put your keystore alias password here
             CM_KEY_ALIAS_USERNAME: MyApp #<-- Put your keystore alias username here
@@ -66,7 +66,7 @@ workflows:
 # iOS Ionic Cordova workflow example
 # The following example shows a workflow that can be used to publish your Ionic Cordova iOS app to App Store Connect.
 
-workflows:
+workflows:1
   ionic-cordova-ios-workflow:
     name: MyApp Workflow
     max_build_duration: 120
