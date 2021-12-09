@@ -13,7 +13,9 @@ workflows:
           - certificate_credentials # <-- (Includes CERTIFICATE_PRIVATE_KEY - Put your Certificate Private Key here)
           - other
       vars:      
-        BUNDLE_ID: "io.codemagic.ioniccordova" # <-- Put your Bundle Id here 
+        XCODE_WORKSPACE: "platforms/ios/myApp.xcworkspace" # <-- Put the name of your workspace here.
+        XCODE_SCHEME: "myApp" # <-- Put the name of your scheme here.  
+        BUNDLE_ID: "io.ionic.starter" # <-- Put your Bundle Id here 
       xcode: 12.4
       node: 12
       npm: 6
