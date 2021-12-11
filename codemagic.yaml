@@ -47,7 +47,7 @@ workflows:
           set -e # exit on first failed command
 
           cordova build ios --no-interactive
-          echo "Hello iOS Dev"
+          echo "Hello iOS dev"
 
           
 
