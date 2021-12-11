@@ -1,7 +1,7 @@
 workflows:
   ios-workflow:
     name: iOS workflow
-    environment:
+    # environment:
       # groups:
         # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
           #- app_store_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
@@ -105,7 +105,7 @@ workflows:
     #      #     - group name 2     
   android-workflow:
     name: Android workflow
-    environment:
+    # environment:
       # groups:
         # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
         # - keystore_credentials # <-- (Includes KEYSTORE, KEYSTORE_PASSWORD, KEY_ALIAS_PASSWORD, KEY_ALIAS, KEYSTORE_PATH)
