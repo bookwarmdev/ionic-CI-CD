@@ -1,16 +1,57 @@
 workflows:
-  android:
-    name: build, test & publish Android version
-    scripts: 
-      - name: android ewhg
+  my-workflow:
+    scripts:
+      - name: Install dependencies
+        script: npm ci
+      - name: Switch to a specific version of Cordova
         script: |
-          echo "Hello android build"
-          echo "cool"
-      
-  ios:
-    name: build, test & publish iOS version
-    scripts: 
-      - name: iOs jsjss
+          set -e # exit on first failed command
+          
+          cvm install 9.0.0
+          cvm use 9.0.0
+      - name: Add Android platform
         script: |
-         echo "Hell iOS build"  
-         echo "dev"   
+          set -e # exit on first failed command
+
+          cordova platform remove android --nosave
+          cordova platform add android --confirm --no-interactive --noresources
+          echo "Hello android was created"
+          
+      - name: Build Android release
+        script: |
+          set -e # exit on first failed command
+
+          cordova build android --no-interactive
+          echo "Hello anderoid dev"
+          
+          
+          
+workflows:
+  my-workflow:
+    scripts:
+      - name: Install dependencies
+        script: npm ci
+      - name: Switch to a specific version of Cordova
+        script: |
+          set -e # exit on first failed command
+          
+          cvm install 9.0.0
+          cvm use 9.0.0
+      - name: Add iOS platform
+        script: |
+          set -e # exit on first failed command
+
+          cordova platform remove ios --nosave
+          cordova platform add ios --confirm --no-interactive --noresources --save
+          echo "Hello iOS was Created"
+          
+      - name: Build iOS release
+        script: |
+          set -e # exit on first failed command
+
+          cordova build ios --no-interactive
+          echo "Hello iOS Dev"
+
+          
+
+         
