@@ -22,10 +22,7 @@ workflows:
           set -e # exit on first failed command
 
           cordova build android --no-interactive
-          echo "Hello anderoid dev thanks"
-          
-          
-          
+          echo "Hello anderoid dev thanks" 
 workflows:
   my-workflow:
     scripts:
