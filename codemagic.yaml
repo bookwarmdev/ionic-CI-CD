@@ -38,7 +38,7 @@ workflows:
           cvm use 9.0.0
           npm install -g ionic
           ionic info   
-          echo "Hello iOS Dev greate work"
+          echo "Hello iOS Dev work"
       # - name: Setup iOS
       #   script: |
       #     ionic cordova platform remove ios --nosave
