@@ -22,7 +22,7 @@ workflows:
           set -e # exit on first failed command
 
           cordova build android --no-interactive
-          echo "Hello anderoid dev" 
+          echo "Hello android dev" 
 workflows:
   my-workflow:
     scripts:
@@ -48,7 +48,3 @@ workflows:
 
           cordova build ios --no-interactive
           echo "Hello iOS dev"
-
-          
-
-         
