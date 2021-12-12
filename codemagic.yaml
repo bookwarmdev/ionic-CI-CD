@@ -4,12 +4,12 @@ workflows:
     environment:
       groups:
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-        keystore_credentials: # <-- (Includes KEYSTORE, KEYSTORE_PASSWORD, KEY_ALIAS_PASSWORD, KEY_ALIAS, KEYSTORE_PATH)
-          KEYSTORE: MyApp.jks #<-- Put your keystore file here
-          KEYSTORE_PASSWORD: MyAppTest #<-- Put your keystore password here
-          KEY_ALIAS_PASSWORD: MyAppTest #<-- Put your keystore alias password here
-          KEY_ALIAS: MyApp #<-- Put your keystore alias username here
-          KEYSTORE_PATH: '/MyApp.jks'
+        - keystore_credentials # <-- (Includes KEYSTORE, KEYSTORE_PASSWORD, KEY_ALIAS_PASSWORD, KEY_ALIAS, KEYSTORE_PATH)
+            KEYSTORE: MyApp.jks #<-- Put your keystore file here
+            KEYSTORE_PASSWORD: MyAppTest #<-- Put your keystore password here
+            KEY_ALIAS_PASSWORD: MyAppTest #<-- Put your keystore alias password here
+            KEY_ALIAS: MyApp #<-- Put your keystore alias username here
+            KEYSTORE_PATH: '/MyApp.jks'
         # - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS - Put your google-services.json here)
         # - other
       node: latest
