@@ -1,19 +1,19 @@
 workflows:
   android-workflow:
     name: Android workflow
-    environment:
-      groups:
+    # environment:
+      # groups:
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-        keystore_credentials: | # <-- (Includes KEYSTORE, KEYSTORE_PASSWORD, KEY_ALIAS_PASSWORD, KEY_ALIAS, KEYSTORE_PATH)
-          KEYSTORE: "MyApp.jks" #<-- Put your keystore file here
-          KEYSTORE_PASSWORD: "MyAppTest" #<-- Put your keystore password here
-          KEY_ALIAS_PASSWORD: "MyAppTest" #<-- Put your keystore alias password here
-          KEY_ALIAS: "MyApp" #<-- Put your keystore alias username here
-          KEYSTORE_PATH: "/MyApp.jks"
+        # - keystore_credentials # <-- (Includes KEYSTORE, KEYSTORE_PASSWORD, KEY_ALIAS_PASSWORD, KEY_ALIAS, KEYSTORE_PATH)
+        #     KEYSTORE: "MyApp.jks" #<-- Put your keystore file here
+        #     KEYSTORE_PASSWORD: "MyAppTest" #<-- Put your keystore password here
+        #     KEY_ALIAS_PASSWORD: "MyAppTest" #<-- Put your keystore alias password here
+        #     KEY_ALIAS: "MyApp" #<-- Put your keystore alias username here
+        #     KEYSTORE_PATH: "/MyApp.jks"
         # - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS - Put your google-services.json here)
         # - other
-      node: latest
-      npm: latest       
+      # node: latest
+      # npm: latest       
     triggering:
       events:
         - push
@@ -42,6 +42,10 @@ workflows:
           ionic cordova build android --release --no-interactive --prod --device  
           echo $KEYSTORE | base64 --decode > $KEYSTORE_PATH
           UNSIGNED_APK_PATH=$(find platforms/android/app/build/outputs -name "*.apk" | head -1)
+          KEYSTORE_PATH = $(find MyApp.jks)
+          KEYSTORE_PASSWORD =  "MyAppTest"
+          KEY_ALIAS_PASSWORD = "MyAppTest"
+          KEY_ALIAS = "MyApp"
           jarsigner -sigalg SHA1withRSA -digestalg SHA1 -keystore "${KEYSTORE_PATH}" -storepass "${KEYSTORE_PASSWORD}" -keypass "${KEY_ALIAS_PASSWORD}" "${UNSIGNED_APK_PATH}" "${KEY_ALIAS}"
           mv $UNSIGNED_APK_PATH $(echo $UNSIGNED_APK_PATH | sed 's/-unsigned//')
     artifacts:
