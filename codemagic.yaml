@@ -38,8 +38,8 @@ workflows:
       - name: Build Android
         script: |    
           set -x
-          set -e
-          ionic cordova build android --release --no-interactive --prod --device  
+          set -e 
+          ionic cordova build android --prod --release
           KEYSTORE_PATH = $(find MyApp.jks)
           KEYSTORE_PASSWORD =  "MyAppTest"
           KEY_ALIAS_PASSWORD = "MyAppTest"
