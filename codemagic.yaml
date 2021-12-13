@@ -49,11 +49,12 @@ workflows:
         script: |   
           set -x
           set -e  
-          ionic cordova build android --verbose
+          ionic cordova build android --debug --no-interactive --device                
     artifacts:
       - platforms/android/app/build/outputs/**/*.apk
       - platforms/android/app/build/outputs/**/mapping.txt
     # publishing:
+          # ionic cordova build android --prod --release 
     #     # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
     #     email:
     #         recipients:
