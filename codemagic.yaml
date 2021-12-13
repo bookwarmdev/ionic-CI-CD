@@ -44,7 +44,9 @@ workflows:
         script: |
           set -x
           ionic cordova platform remove android --nosave
-          ionic cordova platform add android --confirm --no-interactive --noresources                 
+          ionic cordova platform add android --confirm --no-interactive --noresources   
+          ionic cordova plugin add cordova-plugin-statusbar 
+          npm install @awesome-cordova-plugins/status-bar               
       - name: Build Android
         script: |   
           set -x
