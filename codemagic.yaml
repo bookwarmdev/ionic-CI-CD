@@ -49,8 +49,7 @@ workflows:
         script: |   
           set -x
           set -e  
-          ionic cordova build android --prod --release
-          
+          ionic cordova build android --release --no-interactive --prod --device
     artifacts:
       - platforms/android/app/build/outputs/**/*.apk
       - platforms/android/app/build/outputs/**/mapping.txt
