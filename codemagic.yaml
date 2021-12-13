@@ -40,21 +40,20 @@ workflows:
           npm ci # equivalent of npm install for CI systems. Requires package-lock.json or npm-shrinkwrap.json to be present
           cvm install 9.0.0
           cvm use 9.0.0          
-      - name: Setup Cordova Android platform
-        script: |
-          set -x
-          ionic cordova platform remove android --nosave
-          ionic cordova platform add android --confirm --no-interactive --noresources                 
+      # - name: Setup Cordova Android platform
+      #   script: |
+      #     set -x
+      #     ionic cordova platform remove android --nosave
+      #     ionic cordova platform add android --confirm --no-interactive --noresources                 
       - name: Build Android
         script: |   
           set -x
           set -e  
-          ionic cordova build android --debug --no-interactive --device                
+          ionic cordova build android --prod --release 
     artifacts:
       - platforms/android/app/build/outputs/**/*.apk
       - platforms/android/app/build/outputs/**/mapping.txt
     # publishing:
-          # ionic cordova build android --prod --release 
     #     # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
     #     email:
     #         recipients:
