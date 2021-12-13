@@ -42,14 +42,16 @@ workflows:
           cvm use 9.0.0          
       - name: Setup Cordova Android platform
         script: |
+          set -x
           ionic cordova platform remove android --nosave
           ionic cordova platform add android --confirm --no-interactive --noresources                 
       - name: Build Android
-        script: |     
+        script: |   
+          set -x
+          set -e  
           ionic cordova build android --prod --release
-          echo $KEYSTORE | base64 --decode > $KEYSTORE_PATH
           UNSIGNED_APK_PATH=$(find platforms/android/app/build/outputs -name "*.apk" | head -1)
-          jarsigner -sigalg SHA1withRSA -digestalg SHA1 -keystore "MyApp.jks" -storepass "MyAppTest" -keypass "MyAppTest" "${UNSIGNED_APK_PATH}" "MyAppTest"
+          jarsigner -sigalg SHA1withRSA -digestalg SHA1 -keystore MyApp.jks -storepass "MyAppTest" -keypass "MyAppTest" "${UNSIGNED_APK_PATH}" "MyApp"
           mv $UNSIGNED_APK_PATH $(echo $UNSIGNED_APK_PATH | sed 's/-unsigned//')
     artifacts:
       - platforms/android/app/build/outputs/**/*.apk
